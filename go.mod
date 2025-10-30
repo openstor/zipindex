@@ -1,6 +1,6 @@
-module github.com/minio/zipindex
+module github.com/openstor/zipindex
 
-go 1.20
+go 1.25
 
 require (
 	github.com/klauspost/compress v1.17.9

@@ -1,7 +1,7 @@
 # zipindex
 
-[![Go Reference](https://pkg.go.dev/badge/minio/zipindex.svg)](https://pkg.go.dev/github.com/minio/zipindex)
-[![Go](https://github.com/minio/zipindex/actions/workflows/go.yml/badge.svg)](https://github.com/minio/zipindex/actions/workflows/go.yml)
+[![Go Reference](https://pkg.go.dev/badge/openstor/zipindex.svg)](https://pkg.go.dev/github.com/openstor/zipindex)
+[![Go](https://github.com/openstor/zipindex/actions/workflows/go.yml/badge.svg)](https://github.com/openstor/zipindex/actions/workflows/go.yml)
 
 `zipindex` provides a size optimized representation of a zip file directory to allow
 decompressing files inside a ZIP file without reading the file index every file.
@@ -36,7 +36,7 @@ as well as files for which a decompressor isn't registered.
 A custom filter function can be provided to change the default filtering.
 This also allows adding custom data for each file if more information is needed.
 
-See examples in the [documentation](https://pkg.go.dev/github.com/minio/zipindex)
+See examples in the [documentation](https://pkg.go.dev/github.com/openstor/zipindex)
 
 ### Serializing
 
@@ -47,7 +47,7 @@ The files are serialized using the `Serialize()` method.
 This will allow the information to be recreated using `zipindex.DeserializeFiles`,
 or to find a single file `zipindex.FindSerialized` can be used.
 
-See examples in the [documentation](https://pkg.go.dev/github.com/minio/zipindex)
+See examples in the [documentation](https://pkg.go.dev/github.com/openstor/zipindex)
 
 ## Accessing File Content
 
@@ -89,7 +89,7 @@ This covers the most commonly seen compression methods.
 Furthermore, files compressed with [zstandard](https://facebook.github.io/zstd/) 
 as method 93 will be preserved and can be read back.
 
-Use [`RegisterDecompressor`](https://pkg.go.dev/github.com/minio/zipindex#RegisterDecompressor) 
+Use [`RegisterDecompressor`](https://pkg.go.dev/github.com/openstor/zipindex#RegisterDecompressor) 
 to register non-standard decompressors.
 
 

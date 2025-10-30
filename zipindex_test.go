@@ -1,18 +1,6 @@
-/*
- * zipindex, (C)2021 MinIO, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// SPDX-FileCopyrightText: 2025 openstor contributors
+// SPDX-FileCopyrightText: 2015-2025 MinIO, Inc.
+// SPDX-License-Identifier: Apache-2.0
 
 package zipindex
 
@@ -134,13 +122,13 @@ func TestReadDir(t *testing.T) {
 					t.Errorf(" could not find regular file %v", file.Name)
 					continue
 				}
-				if f, err := FindSerialized(ser, file.Name); err != nil || f == nil {
+				f, err := FindSerialized(ser, file.Name)
+				if err != nil || f == nil {
 					t.Errorf("FindSerialized: could not find regular file %v, err: %v, file: %v", file.Name, err, f)
 					continue
-				} else {
-					if !reflect.DeepEqual(*f, *gotFile) {
-						t.Errorf("FindSerialized returned %+v\nfiles.Find returned: %+v", *f, *gotFile)
-					}
+				}
+				if !reflect.DeepEqual(*f, *gotFile) {
+					t.Errorf("FindSerialized returned %+v\nfiles.Find returned: %+v", *f, *gotFile)
 				}
 
 				wantRC, wantErr := file.Open()

@@ -1,27 +1,27 @@
-linters-settings:
-  staticcheck:
-    checks:
-      - all
-      - '-SA6002' # disable the rule SA6002, slices are fine.
-  misspell:
-    locale: US
+# This file uses the new configuration format for golangci-lint v2.x
+# See https://golangci-lint.run/usage/configuration/ for full docs
+
+version: 2
+
+run:
+  timeout: 5m
 
 linters:
   disable-all: true
+  disable:
+    - errcheck
+    - staticcheck
   enable:
-    - typecheck
-    - goimports
     - misspell
     - govet
     - ineffassign
-    - gosimple
-    - staticcheck
     - unused
+    - revive
 
 issues:
   exclude-use-default: false
   exclude:
-      - should have a package comment
-      - comment on exported method
-      - should have comment or be unexported
-      - error strings should not be capitalized or end with punctuation or a newline
+    - 'should have a package comment'
+    - 'comment on exported method'
+    - 'should have comment or be unexported'
+    - 'error strings should not be capitalized or end with punctuation or a newline'

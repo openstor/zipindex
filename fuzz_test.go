@@ -1,21 +1,8 @@
 //go:build go1.18
-// +build go1.18
 
-/*
- * zipindex, (C)2021 MinIO, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// SPDX-FileCopyrightText: 2025 openstor contributors
+// SPDX-FileCopyrightText: 2015-2025 MinIO, Inc.
+// SPDX-License-Identifier: Apache-2.0
 
 package zipindex
 
@@ -50,7 +37,7 @@ func FuzzRoundtrip(f *testing.F) {
 		var files Files
 		var err error
 		for {
-			files, err = ReadDir(b[len(b)-sz:], int64(len(b)), func(dst *File, entry *ZipDirEntry) *File {
+			files, err = ReadDir(b[len(b)-sz:], int64(len(b)), func(dst *File, _ *ZipDirEntry) *File {
 				return dst
 			})
 			if err == nil {
@@ -150,7 +137,7 @@ func addBytesFromZip(f *testing.F, filename string) {
 	}
 }
 
-func TestDeserializeFiles(t *testing.T) {
+func TestDeserializeFiles(_ *testing.T) {
 	b := []byte("\x01\x91\x98\xd93aasdgasgdiausgdiashdas.as\x0014\a\x01\x00\xce\x00\xdfiasdasd-1237814dgasidgb\xdf\xdf\xdf\b\x80")
 	DeserializeFiles(b)
 	FindSerialized(b, "a.txt")
